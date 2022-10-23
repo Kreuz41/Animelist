@@ -14,7 +14,8 @@
         <StackPanel Grid.Column="0"
               Background="Orange">
             <Label Content="El1" FontSize="20"/>
-            <Label Content="El2" FontSize="20"/>
+            <Button Content="Anime List" FontSize="20" 
+                    Click="ButtonGoToAnimeList_Click"/>
             <Label Content="El3" FontSize="20"/>
             <Label Content="El4" FontSize="20"/>
             <Label Content="El5" FontSize="20"/>
@@ -27,8 +28,7 @@
                 <RowDefinition/>
                 <RowDefinition Height="35"/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0"
-                        Background="OrangeRed">
+            <Grid Grid.Row="0" Background="OrangeRed">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -43,10 +43,9 @@
                 <Label Content="El5" FontSize="20" Grid.Column="4"/>
             </Grid>
             <Grid Grid.Row="1">
-                <Label Content="Main"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       FontSize="100"/>
+                <ListBox x:Name="MainListBox">
+
+                </ListBox>
             </Grid>
             <Grid Grid.Row="2"
                   Background="OrangeRed">
