@@ -11,15 +11,58 @@
             <ColumnDefinition Width="0,25*"/>
             <ColumnDefinition Width="0,75*"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0">
-            
-        </Grid>
+        <StackPanel Grid.Column="0"
+              Background="Orange">
+            <Label Content="El1" FontSize="20"/>
+            <Label Content="El2" FontSize="20"/>
+            <Label Content="El3" FontSize="20"/>
+            <Label Content="El4" FontSize="20"/>
+            <Label Content="El5" FontSize="20"/>
+            <Label Content="El6" FontSize="20"/>
+            <Label Content="El7" FontSize="20"/>
+        </StackPanel>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="35"/>
                 <RowDefinition/>
                 <RowDefinition Height="35"/>
             </Grid.RowDefinitions>
+            <Grid Grid.Row="0"
+                        Background="OrangeRed">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Content="El1" FontSize="20" Grid.Column="0"/>
+                <Label Content="El2" FontSize="20" Grid.Column="1"/>
+                <Label Content="El3" FontSize="20" Grid.Column="2"/>
+                <Label Content="El4" FontSize="20" Grid.Column="3"/>
+                <Label Content="El5" FontSize="20" Grid.Column="4"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Label Content="Main"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="100"/>
+            </Grid>
+            <Grid Grid.Row="2"
+                  Background="OrangeRed">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Content="El1" FontSize="20" Grid.Column="0"/>
+                <Label Content="El2" FontSize="20" Grid.Column="1"/>
+                <Label Content="El3" FontSize="20" Grid.Column="2"/>
+                <Label Content="El4" FontSize="20" Grid.Column="3"/>
+                <Label Content="El5" FontSize="20" Grid.Column="4"/>
+            </Grid>
         </Grid>
     </Grid>
 </Window>
