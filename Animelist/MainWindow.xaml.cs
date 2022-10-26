@@ -1,7 +1,10 @@
 ﻿using Animelist.Models.HtmlParsers;
 using Animelist.Models.HtmlParsers.Classes;
 using System.Windows;
-using System.Collections;
+using Animelist.Models.Html_Parsers.Classes;
+using System.Collections.ObjectModel;
+using System.Windows.Media;
+using System.Collections.Generic;
 
 namespace Animelist
 {
@@ -10,15 +13,15 @@ namespace Animelist
         public MainWindow()
         {
             InitializeComponent();
-            parser = new ParserWorker<string[]>(new ShikimoriAnimeListParser());
-
-            parser.OnCompleted += Parser_OnCompleted;
-            parser.OnNewData += Parser_OnNewData;
         }
 
-        private void Parser_OnNewData(object arg1, string[] arg2)
+
+        List<ShikimoriAnimeListParser> titles = new List<ShikimoriAnimeListParser>();
+
+        private void Parser_OnNewData(object arg1, ShikimoriAnimeListParser[] arg2)
         {
-            MainListBox.ItemsSource = arg2;
+            titles.AddRange(arg2);
+            MainList.ItemsSource = titles;
         }
 
         private void Parser_OnCompleted(object obj)
@@ -26,11 +29,17 @@ namespace Animelist
             MessageBox.Show("Ok");
         }
 
-        ParserWorker<string[]> parser;
+        ParserWorker<ShikimoriAnimeListParser[]> parser;
 
         private void ButtonGoToAnimeList_Click(object sender, RoutedEventArgs e)
         {
-            parser.ParserSettings = new ShikimoriAnimeListParserSettings(1, 2);
+
+            parser = new ParserWorker<ShikimoriAnimeListParser[]>(new ShikimoriAnimeListParser());
+
+            parser.OnCompleted += Parser_OnCompleted;
+            parser.OnNewData += Parser_OnNewData;
+
+            parser.ParserSettings = new ShikimoriAnimeListParserSettings(1, 3);
             parser.Start();
         }
     }

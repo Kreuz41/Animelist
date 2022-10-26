@@ -36,16 +36,70 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Label Content="El1" FontSize="20" Grid.Column="0"/>
+                <Grid Grid.Column="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                </Grid>
                 <Label Content="El2" FontSize="20" Grid.Column="1"/>
                 <Label Content="El3" FontSize="20" Grid.Column="2"/>
                 <Label Content="El4" FontSize="20" Grid.Column="3"/>
                 <Label Content="El5" FontSize="20" Grid.Column="4"/>
             </Grid>
             <Grid Grid.Row="1">
-                <ListBox x:Name="MainListBox">
-
-                </ListBox>
+                <ListView x:Name="MainList"
+                          HorizontalContentAlignment="Center"
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal"
+                                       HorizontalAlignment="Center"/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="20"
+                                  Width="150px">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Image Grid.Row="0" 
+                                       HorizontalAlignment="Center"
+                                       Width="231px"
+                                       Height="150px"
+                                       Source="{Binding imagePath}"/>
+                                <TextBlock Grid.Row="1"
+                                       HorizontalAlignment="Center"
+                                       Text="{Binding russianTitle}"
+                                       TextWrapping="WrapWithOverflow"
+                                       TextAlignment="Center"/>
+                                <TextBlock Grid.Row="2"
+                                       HorizontalAlignment="Center"
+                                       Text="{Binding englishTitle}"
+                                       TextWrapping="WrapWithOverflow"
+                                       TextAlignment="Center"/>
+                                <Grid Grid.Row="3">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0"
+                                           Content="{Binding animeType}"/>
+                                    <Label Grid.Column="1"
+                                           Content="{Binding yearOfARealise}"
+                                           HorizontalAlignment="Right"/>
+                                </Grid>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </Grid>
             <Grid Grid.Row="2"
                   Background="OrangeRed">

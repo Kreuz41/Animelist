@@ -13,8 +13,6 @@ namespace Animelist.Models.HtmlParsers
 
         HtmlLoader loader;
         bool isActive;
-
-        #region Prop
         public bool IsActive
         {
             get
@@ -45,10 +43,9 @@ namespace Animelist.Models.HtmlParsers
                 loader = new HtmlLoader(value);
             }
         }
-        #endregion
 
-        public event Action<object, T> OnNewData;
-        public event Action<object> OnCompleted;
+        public event Action<object, T> OnNewData; // Событие на добавление данных
+        public event Action<object> OnCompleted; // Событие на завершение
 
         public ParserWorker(IParser<T> parser)
         {
@@ -80,14 +77,10 @@ namespace Animelist.Models.HtmlParsers
                     OnCompleted?.Invoke(this);
                     return;
                 }
-
                 string source = await loader.GetSourceByPageId(i);
                 HtmlParser domParser = new HtmlParser();
-
                 IHtmlDocument document = await domParser.ParseDocumentAsync(source);
-
                 T result = parser.Parse(document);
-
                 OnNewData?.Invoke(this, result);
             }
 

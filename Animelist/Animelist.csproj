@@ -43,6 +43,9 @@
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing.Common, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.6.0.0\lib\net461\System.Drawing.Common.dll</HintPath>
+    </Reference>
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
     </Reference>
@@ -82,8 +85,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Models\Html_Parsers\Classes\HtmlLoader.cs" />
     <Compile Include="Models\Html_Parsers\Classes\ShikimoriAnimeListParser.cs" />
+    <Compile Include="Models\Html_Parsers\Classes\HtmlLoader.cs" />
     <Compile Include="Models\Html_Parsers\Classes\ShikimoriAnimeListParserSettings.cs" />
     <Compile Include="Models\Html_Parsers\Interfaces\IParser.cs" />
     <Compile Include="Models\Html_Parsers\Interfaces\IParserSettings.cs" />
@@ -94,6 +97,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ObservebalCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

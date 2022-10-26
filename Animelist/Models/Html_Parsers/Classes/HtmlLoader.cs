@@ -7,15 +7,19 @@ namespace Animelist.Models.HtmlParsers.Classes
 {
     internal class HtmlLoader
     {
-        readonly HttpClient client;
-        readonly string url;
+        readonly HttpClient client; // То что парсим
+        readonly string url; // Ссылка
 
         public HtmlLoader(IParserSettings settings)
         {
             client = new HttpClient();
             url = $"{settings.BaseUrl}/{settings.Prefix}/";
         }
-
+        /*
+         * Собирает ссылку относительно страницы
+         * 
+         * Ну там когда страниц 1-987
+         */
         public async Task<string> GetSourceByPageId(int id)
         {
             string currentUrl = url.Replace("{CurrentId}", id.ToString());
