@@ -119,8 +119,10 @@ namespace Animelist.Models.Html_Parsers.Classes
             List<ShikimoriAnimeListParser> list = new List<ShikimoriAnimeListParser>();
 
             //Получаем все теги типа article у которых есть класс c-anime 
-            IEnumerable<AngleSharp.Dom.IElement> items = document.QuerySelectorAll("article").
+            IEnumerable<IElement> items = document.QuerySelectorAll("article").
                 Where(item => item.ClassName != null && item.ClassName.Contains("c-anime"));
+
+
 
             //Заполняем контейнер list
             foreach (var item in items)

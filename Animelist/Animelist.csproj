@@ -14,6 +14,8 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -88,6 +90,7 @@
     <Compile Include="Models\Html_Parsers\Classes\ShikimoriAnimeListParser.cs" />
     <Compile Include="Models\Html_Parsers\Classes\HtmlLoader.cs" />
     <Compile Include="Models\Html_Parsers\Classes\ShikimoriAnimeListParserSettings.cs" />
+    <Compile Include="Models\Html_Parsers\Classes\ShikimoryMaxPageParser.cs" />
     <Compile Include="Models\Html_Parsers\Interfaces\IParser.cs" />
     <Compile Include="Models\Html_Parsers\Interfaces\IParserSettings.cs" />
     <Compile Include="Models\Html_Parsers\ParserWorker.cs" />
@@ -114,6 +117,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

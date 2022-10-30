@@ -2,9 +2,8 @@
 using Animelist.Models.HtmlParsers.Classes;
 using System.Windows;
 using Animelist.Models.Html_Parsers.Classes;
-using System.Collections.ObjectModel;
-using System.Windows.Media;
 using System.Collections.Generic;
+using System.Windows.Input;
 
 namespace Animelist
 {
@@ -29,18 +28,41 @@ namespace Animelist
             MessageBox.Show("Ok");
         }
 
-        ParserWorker<ShikimoriAnimeListParser[]> parser;
+        ParserWorker<ShikimoriAnimeListParser[]> firstTitlesPageParser;
+        ParserWorker<ShikimoryMaxPageParser[]> maxPageParser;
 
         private void ButtonGoToAnimeList_Click(object sender, RoutedEventArgs e)
         {
 
-            parser = new ParserWorker<ShikimoriAnimeListParser[]>(new ShikimoriAnimeListParser());
+            firstTitlesPageParser = new ParserWorker<ShikimoriAnimeListParser[]>(new ShikimoriAnimeListParser());
 
-            parser.OnCompleted += Parser_OnCompleted;
-            parser.OnNewData += Parser_OnNewData;
+            firstTitlesPageParser.OnCompleted += Parser_OnCompleted;
+            firstTitlesPageParser.OnNewData += Parser_OnNewData;
 
-            parser.ParserSettings = new ShikimoriAnimeListParserSettings(1, 3);
-            parser.Start();
+            firstTitlesPageParser.ParserSettings = new ShikimoriAnimeListParserSettings(1, 2);
+            firstTitlesPageParser.Start();
+
+            maxPageParser = new ParserWorker<ShikimoryMaxPageParser[]>(new ShikimoryMaxPageParser());
+            maxPageParser.ParserSettings = new ShikimoriAnimeListParserSettings(1, 2);
+
+            maxPageParser.OnCompleted += Parser_OnCompleted;
+            maxPageParser.OnNewData += Pars_OnNewData;
+            maxPageParser.Start();
+        }
+
+        private void Pars_OnNewData(object arg1, ShikimoryMaxPageParser[] arg2)
+        {
+            MaxPageLb.Content = arg2[0].maxValue;
+        }
+
+        private void BackLb_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            
+        }
+
+        private void NextLb_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }

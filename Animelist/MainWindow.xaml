@@ -5,14 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Animelist"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Animelist" Height="500" Width="800"
+        FontStretch="Normal" 
+        FontFamily="Cascadia Mono" 
+        FontWeight="Normal" WindowStyle="ThreeDBorderWindow"
+        WindowState="Maximized">
     <Grid>
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0,25*"/>
             <ColumnDefinition Width="0,75*"/>
         </Grid.ColumnDefinitions>
+
         <StackPanel Grid.Column="0"
-              Background="Orange">
+              Background="#0b0b0b">
+
             <Label Content="El1" FontSize="20"/>
             <Button Content="Anime List" FontSize="20" 
                     Click="ButtonGoToAnimeList_Click"/>
@@ -21,22 +28,38 @@
             <Label Content="El5" FontSize="20"/>
             <Label Content="El6" FontSize="20"/>
             <Label Content="El7" FontSize="20"/>
+            
         </StackPanel>
+        
         <Grid Grid.Column="1">
+            
             <Grid.RowDefinitions>
                 <RowDefinition Height="35"/>
                 <RowDefinition/>
                 <RowDefinition Height="35"/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0" Background="OrangeRed">
+
+            <Grid Grid.Row="0" Background="#232323">
+                
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="auto"/>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
+
+                <Grid.Resources>
+                    <Style TargetType="Label">
+                        <Setter Property="FontSize" Value="20"/>
+                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="Foreground" Value="White"/>
+                    </Style>
+                </Grid.Resources>
+                
                 <Grid Grid.Column="0">
+                    
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
@@ -44,65 +67,122 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
+
+                    <Label Content="&lt;"
+                           MouseLeftButtonDown="BackLb_MouseLeftButtonDown"/>
+                    <TextBox Grid.Column="1"
+                             Width="50"
+                             Margin="5"
+                             x:Name="PageTB"/>
+                    <Label Grid.Column="2"
+                           Content="/"/>
+                    <Label x:Name="MaxPageLb"
+                           Grid.Column="3"/>
+                    <Label Content=">"
+                           Grid.Column="4"
+                           MouseLeftButtonDown="NextLb_MouseLeftButtonDown"/>
+
                 </Grid>
+                
                 <Label Content="El2" FontSize="20" Grid.Column="1"/>
                 <Label Content="El3" FontSize="20" Grid.Column="2"/>
                 <Label Content="El4" FontSize="20" Grid.Column="3"/>
                 <Label Content="El5" FontSize="20" Grid.Column="4"/>
+                
             </Grid>
+            
             <Grid Grid.Row="1">
+                
                 <ListView x:Name="MainList"
                           HorizontalContentAlignment="Center"
-                          ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                          >
+
+                    <ListView.Background>
+                        <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                            <GradientStop Color="#606c88" Offset="0"/>
+                            <GradientStop Color="#3f4c6b" Offset="1"/>
+                        </LinearGradientBrush>
+                    </ListView.Background>
+                    
                     <ListView.ItemsPanel>
+                        
                         <ItemsPanelTemplate>
                             <WrapPanel Orientation="Horizontal"
                                        HorizontalAlignment="Center"/>
                         </ItemsPanelTemplate>
+                        
                     </ListView.ItemsPanel>
+                    
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <Grid Margin="20"
-                                  Width="150px">
+                            <Border CornerRadius="8"
+                                    BorderThickness="1">
+                                
+                            <Grid Margin="5"
+                                  Width="150px"
+                                  Height="300"
+                                  Background="#151515">
+
+                                <Grid.Resources>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="Foreground" Value="White"/>
+                                    </Style>
+                                </Grid.Resources>
+
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
                                     <RowDefinition/>
                                     <RowDefinition/>
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
+                                
                                 <Image Grid.Row="0" 
                                        HorizontalAlignment="Center"
-                                       Width="231px"
+                                       VerticalAlignment="Center"
+                                       Width="236px"
                                        Height="150px"
-                                       Source="{Binding imagePath}"/>
+                                       Source="{Binding imagePath}"
+                                       Margin="5"/>
+                                
                                 <TextBlock Grid.Row="1"
                                        HorizontalAlignment="Center"
                                        Text="{Binding russianTitle}"
                                        TextWrapping="WrapWithOverflow"
                                        TextAlignment="Center"/>
+                                
                                 <TextBlock Grid.Row="2"
                                        HorizontalAlignment="Center"
                                        Text="{Binding englishTitle}"
                                        TextWrapping="WrapWithOverflow"
                                        TextAlignment="Center"/>
+                                
                                 <Grid Grid.Row="3">
+                                    
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition/>
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
+                                    
                                     <Label Grid.Column="0"
                                            Content="{Binding animeType}"/>
-                                    <Label Grid.Column="1"
+                                        <Label Grid.Column="1"
                                            Content="{Binding yearOfARealise}"
                                            HorizontalAlignment="Right"/>
-                                </Grid>
+
+                                    </Grid>
                             </Grid>
+                            
+                            </Border>
                         </DataTemplate>
                     </ListView.ItemTemplate>
+                    
                 </ListView>
+                
             </Grid>
             <Grid Grid.Row="2"
                   Background="OrangeRed">
+                
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -110,12 +190,15 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
+                
                 <Label Content="El1" FontSize="20" Grid.Column="0"/>
                 <Label Content="El2" FontSize="20" Grid.Column="1"/>
                 <Label Content="El3" FontSize="20" Grid.Column="2"/>
                 <Label Content="El4" FontSize="20" Grid.Column="3"/>
                 <Label Content="El5" FontSize="20" Grid.Column="4"/>
+                
             </Grid>
         </Grid>
+        
     </Grid>
 </Window>
