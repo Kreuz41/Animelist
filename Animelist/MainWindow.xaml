@@ -120,8 +120,6 @@
                                     BorderThickness="1">
                                 
                             <Grid Margin="5"
-                                  Width="150px"
-                                  Height="300"
                                   Background="#151515">
 
                                 <Grid.Resources>
@@ -165,10 +163,12 @@
                                     </Grid.ColumnDefinitions>
                                     
                                     <Label Grid.Column="0"
-                                           Content="{Binding animeType}"/>
-                                        <Label Grid.Column="1"
+                                           Content="{Binding animeType}"
+                                           Foreground="White"/>
+                                    <Label Grid.Column="1"
                                            Content="{Binding yearOfARealise}"
-                                           HorizontalAlignment="Right"/>
+                                           HorizontalAlignment="Right"
+                                           Foreground="White"/>
 
                                     </Grid>
                             </Grid>
